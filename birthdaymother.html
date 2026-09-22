@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Mummy! - our Special Day</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #ff6b6b;
+            --secondary: #ffd166;
+            --accent: #4ecdc4;
+            --text: #333;
+            --light: #f8f9fa;
+            --shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--light) 0%, #f0f8ff 100%);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-bottom: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+        }
+
+        .header-title {
+            font-size: 2.5rem;
+            color: var(--primary);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+        }
+
+        .header-subtitle {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.4;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 1.1rem;
+        }
+
+        .nav a:hover {
+            color: var(--primary);
+            background: rgba(255, 107, 107, 0.1);
+        }
+
+        .nav .active {
+            color: var(--primary);
+            background: rgba(255, 107, 107, 0.1);
+        }
+
+        main {
+            padding: 25px 0;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card h3 i {
+            font-size: 1.5rem;
+        }
+
+        .card p {
+            color: var(--text);
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        .card .highlight {
+            background: linear-gradient(120deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+        }
+
+        .countdown-container {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-top: 15px;
+        }
+
+        .countdown-container h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .countdown {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .countdown-details {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 10px;
+            font-size: 1.2rem;
+            color: var(--text);
+        }
+
+        .countdown-details span {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .countdown-details span strong {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .countdown-details span .unit {
+            font-size: 0.9rem;
+            color: var(--secondary);
+        }
+
+        .wishes-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .wishes-item {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: var(--shadow);
+            border: 1px dashed rgba(255, 107, 107, 0.2);
+        }
+
+        .wishes-item h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .wishes-item p {
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        .memory-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .memory-item {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: var(--shadow);
+            border: 1px dashed rgba(255, 107, 107, 0.2);
+        }
+
+        .memory-item h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .memory-item p {
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        .memory-item .photo {
+            width: 100%;
+            height: 150px;
+            border-radius: 8px;
+            background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px 0;
+            color: var(--text);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            margin-top: 20px;
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+
+        .heart {
+            font-size: 2rem;
+            color: var(--primary);
+            text-shadow: 0 2px 4px rgba(255, 107, 107, 0.3);
+        }
+
+        .birthday-greeting {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(120deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin: 0 0 15px;
+        }
+
+        .birthday-greeting span {
+            display: inline-block;
+            position: relative;
+        }
+
+        .birthday-greeting span::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .today {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .today h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .today .date {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .today .message {
+            font-size: 1.2rem;
+            color: var(--text);
+            text-align: center;
+        }
+
+        .special-memory {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(120deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            margin-top: 10px;
+        }
+
+        .special-memory::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .page-header {
+            text-align: center;
+            padding: 15px 0;
+            margin-bottom: 20px;
+        }
+
+        .page-header h2 {
+            color: var(--primary);
+            font-size: 2rem;
+        }
+
+        .page-header p {
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
+
+        .page-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .page-content h3 {
+            color: var(--primary);
+            margin: 15px 0;
+        }
+
+        .page-content p {
+            color: var(--text);
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+
+        .page-content .highlight {
+            background: linear-gradient(120deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-content .action {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: background 0.3s;
+        }
+
+        .page-content .action:hover {
+            background: #ff5252;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .wishes-container, .memory-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-title {
+                font-size: 1.8rem;
+            }
+            
+            .page-title {
+                font-size: 1.7rem;
+            }
+            
+            .countdown {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="header-title">Happy Birthday, Mummy!</h1>
+            <p class="header-subtitle">Today is a special day to celebrate the amazing woman who has been the heart of our family and our inspiration. We love you more than words can express!</p>
+        </div>
+    </header>
+
+    <nav class="container nav">
+        <a href="#" class="active">Home</a>
+        <a href="about.html">About Mummy</a>
+        <a href="wishes.html">Wishes & Messages</a>
+        <a href="memory.html">Special Memories</a>
+        <a href="countdown.html">Countdown</a>
+    </nav>
+
+    <main class="container">
+        <div class="page" id="home">
+            <div class="page-header">
+                <h2>Happy Birthday, Mummy!</h2>
+                <p>our special day together</p>
+            </div>
+            
+            <div class="content">
+                <div class="birthday-greeting">
+                    Happy Birthday, Mummy! <span>❤️</span>
+                </div>
+                
+                <div class="today">
+                    <h3>Today's Special Day</h3>
+                    <div class="date">Your Birthday</div>
+                    <p class="message">We're celebrating you today with love, laughter, and so many wonderful memories. You mean the world to us!</p>
+                </div>
+                
+                <div class="special-memory">
+                    The most beautiful gift we can give you today is our love.
+                </div>
+                
+                <div class="card">
+                    <h3><i class="fas fa-heart"></i> My Promise to You</h3>
+                    <p>Mummy, you have always been my inspiration and my strength. Today, I promise to keep supporting you, loving you, and celebrating you in every way that matters. Your happiness is my highest priority, and I will always be here for you.</p>
+                </div>
+                
+                <div class="card">
+                    <h3><i class="fas fa-smile"></i> Today's Special Treat</h3>
+                    <p>Today, I've prepared this specially for you! I hope you enjoy all the love and happiness I've created just for you.</p>
+                </div>
+                
+                <div class="card">
+                    <h3><i class="fas fa-gift"></i> My Biggest Gift</h3>
+                    <p>my greatest gift to you today is my love. You've made my life so much brighter with your kindness, wisdom, and unwavering spirit. Thank you for everything you do.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="page" id="about">
+            <div class="page-header">
+                <h2>About Mummy</h2>
+                <p>Who you are and why we love you</p>
+            </div>
+            
+            <div class="content">
+                <div class="content-grid">
+                    <div class="card">
+                        <h3><i class="fas fa-user"></i> My Mummy</h3>
+                        <p>She's the heart of our family, the source of our strength, and the person who always knows the best way to make us smile. She has taught us the importance of kindness, patience, and love in every aspect of life.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3><i class="fas fa-heart"></i> What Makes You Special</h3>
+                        <p>Mummy's special qualities include her unwavering optimism, her incredible patience, her ability to listen, and her boundless love. She has a way of making everyone around her feel special and valued.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3><i class="fas fa-magic"></i> Your Impact on Us</h3>
+                        <p>Mummy's presence has transformed my lives in countless ways. She inspires me to be better, to care more deeply, and to find joy in the little things. Her love and support have been my greatest strength.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3><i class="fas fa-graduation-cap"></i> our Family's Pride</h3>
+                    <p>Mummy is not just my mother, but also my inspiration and my guiding light. She has shown mr what true love, dedication, and strength look like. Today, I celebrate her with all our hearts.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="page" id="wishes">
+            <div class="page-header">
+                <h2>Happy Birthday Wishes & Messages</h2>
+                <p>Message from your beloved son, Hemil</p>
+            </div>
+            
+            <div class="content">
+                <div class="wishes-container">
+                    <div class="wishes-item">
+                        <h4><i class="fas fa-smile"></i> From the Children</h4>
+                        <p>"Happy Birthday, Mom! You are the best mom and the most amazing person we know. We love you so much and wish you a day full of happiness and joy!"</p>
+                    </div>
+                    
+                    <div class="wishes-item">
+                        <h4><i class="fas fa-heart"></i> From the Family</h4>
+                        <p>"Mummy, today is your special day. We are so grateful for the love and support you've given us all these years. You are our inspiration and our strength. Happy Birthday!"</p>
+                    </div>
+                    
+                    <div class="wishes-item">
+                        <h4><i class="fas fa-star"></i> From the Friends</h4>
+                        <p>"Mummy, you have such a beautiful spirit and a way of making everyone around you feel special. Happy Birthday to the amazing person who has made our lives so much brighter!"</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3><i class="fas fa-comment"></i> Special Message from Us All</h3>
+                    <p>Mummy, today we want to say something special to you: You are loved more than words can express. Your presence has been a gift to us, and we are so grateful for you. Happy Birthday, Mom!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="page" id="memory">
+            <div class="page-header">
+                <h2>Special Memories</h2>
+                <p>our favorite moments with Mummy</p>
+            </div>
+            
+            <div class="content">
+                <div class="memory-container">
+                    <div class="memory-item">
+                        <h4><i class="fas fa-smile"></i> First Birthday Memory</h4>
+                        <p>Mummy was so happy when she saw us for the first time. She laughed so much and held us in her arms. That memory remains one of our favorite moments from childhood.</p>
+                    </div>
+                    
+                    <div class="memory-item">
+                        <h4><i class="fas fa-heart"></i> The Day She Learned to Walk</h4>
+                        <div class="photo">Mummy's First Steps</div>
+                        <p>Mummy's first steps were a magical moment. She took her first steps with us, and we all felt so proud. That day, she smiled for the first time, and we knew she was ready for the world.</p>
+                    </div>
+                    
+                    <div class="memory-item">
+                        <h4><i class="fas fa-rocket"></i> The Day We Learned to Fly</h4>
+                        <div class="photo">Flying Together</div>
+                        <p>Mummy taught us the importance of dreaming big. She showed us how to fly with our dreams, and we learned to soar together. Today, we continue to fly high because of her.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3><i class="fas fa-gift"></i> our Most Precious Memory</h3>
+                    <p>Mummy's most precious memory is the day she learned to love and be loved in return. That day, she held us close and told us, "I love you more than anything." That moment has been our greatest gift.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="page" id="countdown">
+            <div class="page-header">
+                <h2>Countdown to Your Birthday</h2>
+                <p>How many days until your next birthday?</p>
+            </div>
+            
+            <div class="content">
+                <div class="countdown-container">
+                    <h3>Countdown to Your Next Birthday</h3>
+                    <div class="countdown">0</div>
+                    <div class="countdown-details">
+                        <span><strong>Days</strong><br><span class="unit">0</span></span>
+                        <span><strong>Hours</strong><br><span class="unit">0</span></span>
+                        <span><strong>Minutes</strong><br><span class="unit">0</span></span>
+                        <span><strong>Seconds</strong><br><span class="unit">0</span></span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3><i class="fas fa-calendar-check"></i> Your Birthday is Here</h3>
+                    <p>Mummy, I've prepared a special surprise for you. I hope you enjoy all the love and happiness I've created just for you. Your birthday is here, and I can't wait to celebrate with you!</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Happy Birthday, Mummy! We love you more than words can express.</p>
+            <p>Created with ❤️ for my special mother</p>
+        </div>
+    </footer>
+
+    <script>
+        // Show the home page by default
+        document.addEventListener('DOMContentLoaded', function() {
+            const pages = document.querySelectorAll('.page');
+            const navLinks = document.querySelectorAll('.nav a');
+            
+            // Show home page
+            pages[0].classList.add('active');
+            
+            // Add click event to navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetPage = document.querySelector(`.page#${this.textContent.trim()}`);
+                    const currentPage = document.querySelector('.page.active');
+                    
+                    // Remove active class from current page
+                    currentPage.classList.remove('active');
+                    
+                    // Add active class to target page
+                    targetPage.classList.add('active');
+                    
+                    // Update active nav link
+                    navLinks.forEach(navLink => {
+                        navLink.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                });
+            });
+            
+            // Add smooth scrolling to anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') {
+                        return;
+                    }
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
